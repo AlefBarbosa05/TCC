@@ -73,11 +73,22 @@ class MyWidget extends StatelessWidget {
                     TextButton(
                       style: ButtonStyle(
                         foregroundColor:
-                            MaterialStateProperty.all<Color>(Colors.blue),
+                            MaterialStateProperty.all<Color>(Colors.white),
                       ),
                       onPressed: () {},
                       child: Text('ENTRAR'),
-                    )
+                    ),
+                  ]),
+                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                    Text('Ainda não tem uma conta?'),
+                    TextButton(
+                      style: ButtonStyle(
+                        foregroundColor:
+                            MaterialStateProperty.all<Color>(Colors.white),
+                      ),
+                      onPressed: () {},
+                      child: Text('CADASTRA-SE'),
+                    ),
                   ]),
                 ])));
   }
