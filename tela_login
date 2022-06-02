@@ -27,7 +27,7 @@ class MyWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-        color: Colors.black,
+        color: Colors.white,
         elevation: 5,
         child: Container(
             width: 500,
@@ -35,12 +35,9 @@ class MyWidget extends StatelessWidget {
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  const Text(
-                    'LOGIN',
-                    style: TextStyle(
-                      fontSize: 30,
-                    ),
-                  ),
+                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                    DropdownButton(),
+                  ]),
                   const Padding(
                     padding: EdgeInsets.all(16.0),
                     child: TextField(
@@ -72,8 +69,8 @@ class MyWidget extends StatelessWidget {
                   Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                     TextButton(
                       style: ButtonStyle(
-                        foregroundColor:
-                            MaterialStateProperty.all<Color>(Colors.white),
+                        foregroundColor: MaterialStateProperty.all<Color>(
+                            Color.fromARGB(255, 0, 0, 0)),
                       ),
                       onPressed: () {},
                       child: Text('ENTRAR'),
@@ -83,8 +80,8 @@ class MyWidget extends StatelessWidget {
                     Text('Ainda não tem uma conta?'),
                     TextButton(
                       style: ButtonStyle(
-                        foregroundColor:
-                            MaterialStateProperty.all<Color>(Colors.white),
+                        foregroundColor: MaterialStateProperty.all<Color>(
+                            Color.fromARGB(255, 0, 0, 0)),
                       ),
                       onPressed: () {},
                       child: Text('CADASTRA-SE'),
@@ -93,3 +90,4 @@ class MyWidget extends StatelessWidget {
                 ])));
   }
 }
+
