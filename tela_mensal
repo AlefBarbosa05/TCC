@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-const Color darkBlue = Color.fromARGB(255, 18, 32, 47);
-
 void main() {
   runApp(MyApp());
 }
@@ -10,84 +8,109 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: darkBlue,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Center(
-          child: MyWidget(),
-        ),
-      ),
+      home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
-class MyWidget extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
+  MyHomePage({Key? key, required this.title}) : super(key: key);
+
+  final String title;
+
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  int _counter = 0;
+  String? dropDownValue;
+  List<String> cityList = [
+    'Janeiro',
+    'Fevereiro',
+    'Março',
+    'Abril',
+    'Maio',
+    'Junho',
+    'Julho',
+    'Agosto',
+    'Setembro',
+    'Outubro',
+    'Novembro',
+    'Dezembro',
+  ];
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+  }
+
+  @override
+  void initState() {
+    //setFilters();
+    super.initState();
+  }
+
+  setFilters() {
+    setState(() {
+      dropDownValue = cityList[2];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Card(
-        color: Colors.white,
-        elevation: 5,
-        child: Container(
-            width: 500,
-            height: 450,
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                    DropdownButton(),
-                  ]),
-                  const Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: TextField(
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'E-mail',
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                width: 300,
+                height: 50,
+                child: DropdownButtonFormField(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: const BorderRadius.all(
+                        const Radius.circular(15.0),
                       ),
                     ),
+                    filled: true,
+                    hintStyle: TextStyle(color: Color.fromARGB(255, 3, 3, 3)),
+                    hintText: "Visão Geral - Mensal",
+                    fillColor: Colors.blue[900],
                   ),
-                  const Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: TextField(
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Senha',
-                      ),
-                    ),
-                  ),
-                  Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-                    TextButton(
-                      style: ButtonStyle(
-                        foregroundColor:
-                            MaterialStateProperty.all<Color>(Colors.blue),
-                      ),
-                      onPressed: () {},
-                      child: Text('Esqueci a senha'),
-                    )
-                  ]),
-                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                    TextButton(
-                      style: ButtonStyle(
-                        foregroundColor: MaterialStateProperty.all<Color>(
-                            Color.fromARGB(255, 0, 0, 0)),
-                      ),
-                      onPressed: () {},
-                      child: Text('ENTRAR'),
-                    ),
-                  ]),
-                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                    Text('Ainda não tem uma conta?'),
-                    TextButton(
-                      style: ButtonStyle(
-                        foregroundColor: MaterialStateProperty.all<Color>(
-                            Color.fromARGB(255, 0, 0, 0)),
-                      ),
-                      onPressed: () {},
-                      child: Text('CADASTRA-SE'),
-                    ),
-                  ]),
-                ])));
+                  value: dropDownValue,
+                  onChanged: (String? Value) {
+                    setState(() {
+                      dropDownValue = Value!;
+                    });
+                  },
+                  items: cityList
+                      .map((cityTitle) => DropdownMenuItem(
+                          value: cityTitle, child: Text("$cityTitle")))
+                      .toList(),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: Icon(Icons.add),
+      ),
+    );
   }
 }
 
