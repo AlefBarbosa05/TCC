@@ -73,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(20.0),
               child: Container(
                 width: 300,
                 height: 50,
@@ -81,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: const BorderRadius.all(
-                        const Radius.circular(15.0),
+                        const Radius.circular(25.0),
                       ),
                     ),
                     filled: true,
@@ -107,8 +107,21 @@ class _MyHomePageState extends State<MyHomePage> {
                           )))
                       .toList(),
                 ),
-                
               ),
+            ),
+            Column(
+              children: [
+                Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: Text(
+                        "Gasto Total",
+                        textAlign: TextAlign.start,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ),
           ],
         ),
@@ -116,3 +129,4 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
