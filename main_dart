@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/graficos.dart';
 import 'package:flutter_application_1/leituras.dart';
@@ -170,22 +169,25 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Container(
-                  height: 100,
-                  width: 100,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        image: NetworkImage(
-                            'https://cdn-icons-png.flaticon.com/512/1170/1170601.png')),
+            Padding(
+              padding: const EdgeInsets.all(30.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    height: 100,
+                    width: 100,
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                          image: NetworkImage(
+                              'https://cdn-icons-png.flaticon.com/512/1170/1170601.png')),
+                    ),
                   ),
-                ),
-                Graficos(),
-                Leituras(),
-              ],
+                  Graficos(),
+                  Leituras(),
+                ],
+              ),
             ),
             ElevatedButton(
                 onPressed: () async {
